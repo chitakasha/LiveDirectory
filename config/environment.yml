@@ -1,1 +1,19 @@
+# ChitAkasha Live Directory Environment Configuration
+
+# General Settings
+name: chitakasha_livedirectory
+channels:
+  - defaults
+
+# Dependencies
+dependencies:
+  - python=3.8
+  - numpy
+  - pandas
+
+# Custom Environment Variables
+env_vars:
+  LOG_LEVEL: "INFO"
+  AUTOGEN_THRESHOLD: 0.7
+  PROMPT_REFRESH_RATE: 60  # in seconds
 
