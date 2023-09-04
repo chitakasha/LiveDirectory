@@ -1,10 +1,10 @@
-Certainly! Below is a Python code snippet for `core/state_management/current_state.py`. This script contains functions to get and update the current state of the Live Directory.
-
-```python
 import json
 import os
 
-def get_current_state():
+def _get_state_file_path():
+    return "data/state.json"
+
+def _get_current_state():
     """
     Retrieves the current state of the Live Directory from a JSON file.
 
@@ -12,7 +12,7 @@ def get_current_state():
         dict: The current state of the directory.
     """
 
-    state_file_path = "data/state.json"
+    state_file_path = _get_state_file_path()
 
     # Check if the state file exists
     if not os.path.exists(state_file_path):
@@ -25,7 +25,7 @@ def get_current_state():
 
     return current_state
 
-def update_state(current_state, generated_text):
+def _update_state(current_state, generated_text):
     """
     Updates the current state of the Live Directory based on the generated text.
 
@@ -42,13 +42,14 @@ def update_state(current_state, generated_text):
     current_state['last_generated_text'] = generated_text
 
     # Save the updated state back to the JSON file
-    state_file_path = "data/state.json"
+    state_file_path = _get_state_file_path()
     with open(state_file_path, "w") as f:
         json.dump(current_state, f, indent=4)
 
     return current_state
-```
 
-This script assumes that the current state of the Live Directory is stored in a JSON file located at `data/state.json`. The `get_current_state` function retrieves the current state from this file, and the `update_state` function updates it based on the newly generated text.
+def get_current_state():
+    return _get_current_state()
 
-Would you like to proceed with another file or have any other questions?
+def update_state(current_state, generated_text):
+    return _update_state(current_state, generated_text)
