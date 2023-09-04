@@ -1,1 +1,21 @@
+{
+  "general": {
+    "log_level": "INFO",
+    "autogen_threshold": 0.7,
+    "prompt_refresh_rate": 60
+  },
+  "golden_ratio": {
+    "phi": 1.618033988749895,
+    "iterations": 10
+  },
+  "inbox": {
+    "path": "data/inbox/prompts.json"
+  },
+  "logs": {
+    "path": "data/logs/activity.log"
+  },
+  "state_management": {
+    "path": "core/state_management/current_state.json"
+  }
+}
 
