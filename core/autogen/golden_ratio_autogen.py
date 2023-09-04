@@ -1,5 +1,6 @@
 import json
 import random
+import re
 
 def generate_text(prompts, current_state, settings):
     """
@@ -21,7 +22,7 @@ def generate_text(prompts, current_state, settings):
     # Initialize variables
     generated_text = ""
     prompt_list = prompts.get('prompts', [])
-    
+
     # Check if there are any prompts
     if not prompt_list:
         return "No prompts available."
@@ -39,5 +40,9 @@ def generate_text(prompts, current_state, settings):
         if len(generated_text.split()) / iterations >= threshold:
             break
 
-    return generated_text.strip()
+    # Remove any stop words from the generated text
+    stop_words = set(stopwords.words("english"))
+    generated_text = " ".join([word for word in generated_text.split() if word not in stop_words])
 
+    # Return the generated text
+    return generated_text.strip()
