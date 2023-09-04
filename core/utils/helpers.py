@@ -1,7 +1,10 @@
 import json
 import datetime
 
-def log_activity(generated_text, new_state):
+def _get_log_file_path():
+    return "data/logs/activity.log"
+
+def _log_activity(generated_text, new_state):
     """
     Logs the activity of the Live Directory.
 
@@ -17,12 +20,12 @@ def log_activity(generated_text, new_state):
         'new_state': new_state
     }
 
-    log_file_path = "data/logs/activity.log"
+    log_file_path = _get_log_file_path()
 
     # Append the log entry to the log file
     with open(log_file_path, "a") as f:
         f.write(json.dumps(log_entry, indent=4))
         f.write("\n")
 
-    print(f"Activity logged at {log_entry['timestamp']}")
-
+def log_activity(generated_text, new_state):
+    return _log_activity(generated_text, new_state)
