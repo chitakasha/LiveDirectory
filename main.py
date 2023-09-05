@@ -13,6 +13,16 @@ def main():
     # Get current state
     current_state = get_current_state()
 
+    # Get files
+    directory = "/"
+    files = get_files(directory)
+
+    directory = "/"
+    files = get_files(directory)
+    results = process_files(files)
+    # Do something with the results...
+
+
     # Load inbox prompts
     prompts = load_prompts()
 
@@ -42,6 +52,7 @@ def load_prompts():
         prompts = json.load(f)
 
     return prompts
+
 
 if __name__ == "__main__":
     main()
